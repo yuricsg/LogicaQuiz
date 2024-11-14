@@ -142,23 +142,22 @@ const hardQuestions = [
     }
 ];
 
-const startButton = document.getElementById("start-btn");
-const startMenu = document.querySelector(".start-menu");
 const appElement = document.querySelector(".app");
-const difficultyMenu = document.getElementById("difficulty-menu");
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
+const startMenu = document.getElementById("start-menu");
 
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 
-function startQuiz() {
+function startQuiz(level) {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Próximo";
     nextButton.style.display = "none";
+    selectDifficulty(level);
     showQuestion();
 }
 
@@ -167,16 +166,13 @@ function selectDifficulty(level) {
     if (level === 'medium') questions = mediumQuestions;
     if (level === 'hard') questions = hardQuestions;
     
-    difficultyMenu.style.display = "none"; // Oculta o menu de dificuldade
-    appElement.style.display = "block"; // Exibe o quiz
-    startQuiz();
+    startMenu.style.display = "none";
+    appElement.style.display = "block";
 }
 
-// Atualize o evento do botão "Começar!" para mostrar o menu de dificuldade
-startButton.addEventListener("click", () => {
-    startMenu.style.display = "none"; 
-    difficultyMenu.style.display = "block"; // Exibe o menu de dificuldade
-});
+document.getElementById("easy-btn").addEventListener("click", () => startQuiz('easy'));
+document.getElementById("medium-btn").addEventListener("click", () => startQuiz('medium'));
+document.getElementById("hard-btn").addEventListener("click", () => startQuiz('hard'));
 
 function showQuestion() {
     resetState();
@@ -201,20 +197,30 @@ function resetState() {
 }
 
 function selectAnswer(button, correct) {
+    Array.from(answerButtons.children).forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
     if (correct) {
         score++;
         button.classList.add("correct");
     } else {
         button.classList.add("incorrect");
     }
+
     Array.from(answerButtons.children).forEach(btn => {
         btn.disabled = true;
         if (btn.innerHTML === questions[currentQuestionIndex].answers.find(ans => ans.correct).text) {
             btn.classList.add("correct");
         }
     });
+
     nextButton.style.display = "block";
 }
+
+
 
 function handleNextButton() {
     currentQuestionIndex++;
@@ -236,8 +242,8 @@ nextButton.addEventListener("click", () => {
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
     } else {
-        appElement.style.display = "none";  
-        startMenu.style.display = "flex";   
+        appElement.style.display = "none";
+        startMenu.style.display = "flex";
         resetState();
     }
 });

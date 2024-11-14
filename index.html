@@ -4,39 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <img src="cesarLogo.png" alt="Logo" class="nav-logo">
+    <body style="display: flex; flex-direction: column;">
+        <nav class="navbar" style="width: 100%;">
+            <div class="nav-container">
+                <img src="./assets/cesarLogo.png" alt="Logo" class="nav-logo">
+            </div>
+        </nav>
+
+        <div class="start-menu" id="start-menu" style="display: flex;">
+            <h1 class="texto-com-contorno" style="color: #ebe5e5; font-size: 36px;">Lógica em Ação</h1>
+            <h2 style="color: rgba(255, 92, 2, 1);">Selecione a dificuldade:</h2>
+            <button id="easy-btn" class="difficulty-btn">Fácil</button>
+            <button id="medium-btn" class="difficulty-btn">Médio</button>
+            <button id="hard-btn" class="difficulty-btn">Difícil</button>
         </div>
-    </nav>
 
-    <div class="start-menu">
-        <h1>Lógica em Ação</h1>
-        <button id="start-btn">Começar!</button>
-    </div>
-
-    <div id="difficulty-menu" style="display: none;">
-        <h2>Selecione a dificuldade:</h2>
-        <button onclick="selectDifficulty('easy')">Fácil</button>
-        <button onclick="selectDifficulty('medium')">Médio</button>
-        <button onclick="selectDifficulty('hard')">Difícil</button>
-    </div>
-
-    <div class="app" style="display: none;">
-        <h1>Quiz Lógica Matemática</h1>
-        <div class="quiz">
-            <h2 id="question">Pergunta</h2>
-            <div id="answer-buttons"></div>
-            <button id="next-btn" style="display: none;">Próximo</button>
+        <div class="app" style="display: none;">
+            <h1>Quiz Lógica Matemática</h1>
+            <div class="quiz">
+                <h2 id="question">Pergunta</h2>
+                <div id="answer-buttons"></div>
+                <button id="next-btn" style="display: none;">Próximo</button>
+            </div>
         </div>
-    </div>
-    
-    <script src="quiz.js"></script>
-</body>
+        
+        <script src="quiz.js"></script>
+    </body>
 </html>
