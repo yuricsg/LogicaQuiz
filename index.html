@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -21,25 +21,21 @@
         <button id="start-btn">Começar!</button>
     </div>
 
-    <div class="app">
+    <div id="difficulty-menu" style="display: none;">
+        <h2>Selecione a dificuldade:</h2>
+        <button onclick="selectDifficulty('easy')">Fácil</button>
+        <button onclick="selectDifficulty('medium')">Médio</button>
+        <button onclick="selectDifficulty('hard')">Difícil</button>
+    </div>
+
+    <div class="app" style="display: none;">
         <h1>Quiz Lógica Matemática</h1>
         <div class="quiz">
             <h2 id="question">Pergunta</h2>
-            <div id="answer-buttons">
-                <button class="btn">Resposta</button>
-                <button class="btn">Resposta</button>
-                <button class="btn">Resposta</button>
-                <button class="btn">Resposta</button>
-            </div>
-            <button id="next-btn">Next</button>
+            <div id="answer-buttons"></div>
+            <button id="next-btn" style="display: none;">Próximo</button>
         </div>
     </div>
-    
-    <script src="quiz.js"></script>
-</body>
-</html>
-
-    
     
     <script src="quiz.js"></script>
 </body>
